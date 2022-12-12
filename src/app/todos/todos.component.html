@@ -27,8 +27,6 @@
       </div>
 
 
-
-
     </form>
   </div>
 </div>
@@ -38,26 +36,12 @@
     <div class="todos-list">
 
 
-      <div class="todo-item " *ngFor="let todo of todos" [class.completed]="todo.completed" >
-
-        <div class="check-box">
-          <i class="fas fa-check"></i>
-        </div>
-
-        <div class="todo-text">
-          {{todo.text}}
-        </div>
-
-        <div class="todo-controls-box">
-          <div class="todo-control-button">
-            <i class="fas fa-edit"></i>
-          </div>
-          <div class="todo-control-button is-danger">
-            <i class="fas fa-trash-alt"></i>
-          </div>
-        </div>
-
-      </div>
+      <app-todo-item
+        *ngFor="let todo of todos; let i = index"
+        [todo] = "todo"
+        (todoClicked)="toggleCompleted(todo)"
+        (editClicked)="editTodo(i, todo)"
+      ></app-todo-item>
 
 
     </div>
