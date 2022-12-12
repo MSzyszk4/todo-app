@@ -10,6 +10,7 @@ import {Todo} from "../todos/shared/todo.model";
 })
 export class EditTodoDialogComponent {
 
+  showValidationErrors: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<EditTodoDialogComponent>,
@@ -18,14 +19,18 @@ export class EditTodoDialogComponent {
 
   onFormSubmit(form: NgForm) {
 
+    if (form.invalid) return  this.showValidationErrors = true;
+
     const updatedTodo = {
       ...this.todo,
       ...form.value
     }
 
-    console.log(updatedTodo)
-
     this.dialogRef.close(updatedTodo)
+
+    this.showValidationErrors = false;
+
+    return 0;
   }
 
   close() {
