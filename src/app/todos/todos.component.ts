@@ -41,7 +41,6 @@ export class TodosComponent implements OnInit{
 
   editTodo(index: number, todo: Todo) {
     // this.dataService.updateTodo(index, todo)
-
     // const index = this.todos.indexOf(todo) -> to samo co zrobione w HTML w ngFor let i = index
 
     let dialogRef = this.dialog.open(EditTodoDialogComponent, {
@@ -57,4 +56,8 @@ export class TodosComponent implements OnInit{
 
   }
 
+  deleteTodo(todo: Todo) {
+    const index = this.todos?.indexOf(todo) || 0
+    this.dataService.deleteTodo(index);
+  }
 }

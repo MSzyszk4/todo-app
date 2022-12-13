@@ -11,6 +11,7 @@ export class TodoItemComponent {
   @Input() todo?: Todo;
   @Output() todoClicked: EventEmitter<void> = new EventEmitter();
   @Output() editClicked: EventEmitter<any> = new EventEmitter<any>();
+  @Output() deleteClicked: EventEmitter<any> = new EventEmitter<any>();
 
 
   onTodoClick() {
@@ -21,4 +22,7 @@ export class TodoItemComponent {
     this.editClicked.emit()
   }
 
+  onDeleteClick() {
+    this.deleteClicked.emit()
+  }
 }
